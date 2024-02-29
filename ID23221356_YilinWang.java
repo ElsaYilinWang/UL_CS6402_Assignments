@@ -197,7 +197,111 @@ public class ID23221356_YilinWang{
     System.out.println("Scenario 3 succeeds.");
 
     /*Scenario 4 */
+    isValid = false;
+
+    int count = 3;
+
+    int answer = (int) Math.random() * 11;
+
+    //Show guess dialog
+    String message = "The game is to guess the number hidden in this mysterious box.\n It should be between 1 and 10 (inclusive)\n You have THREE tries.";
+        
+
+    while (!isValid && count > 0){
+        
+        try {
+            int guess = Integer.parseInt(JOptionPane.showInputDialog(null, message));
+
+            if (guess > answer){
+                
+                message = "LOWER";
+                JOptionPane.showMessageDialog(null, "You should aim " + message + " in your next try, " + userName);
+                //continue;
+
+            } else if (guess < answer){
     
+                message = "HIGHER";
+                JOptionPane.showMessageDialog(null, "You should aim " + message + " in your next try, " + userName);
+                //continue;
+
+            } else {
+
+                JOptionPane.showMessageDialog(null, userName + " is saved!");
+                //break;
+                
+            }
+
+            /*NOT FINISHED!!! */
+
+            count --;
+
+            switch (count) {
+                case 2: 
+                    message = "The game is to guess the number hidden in this mysterious box.\\n" + //
+                                                " It should be between 1 and 10 (inclusive)\\n" + //
+                                                " You have TWO tries.";
+                    JOptionPane.showMessageDialog(null, message);
+                    
+                    break;
+                
+                case 1:
+                    message = "The game is to guess the number hidden in this mysterious box.\\n" + //
+                                                " It should be between 1 and 10 (inclusive)\\n" + //
+                                                " You have ONE FINAL try.";
+                    JOptionPane.showMessageDialog(null, message);
+                    break;
+            
+                default:
+                    JOptionPane.showMessageDialog(null, userName + " is killed!");
+                    break;
+            }
+
+            
+            
+        } catch (Exception e) {
+
+                message = "Invalid input value.\n Please enter 1 to 10.";
+                JOptionPane.showMessageDialog(null, message);
+
+                System.out.println(e + "\nUser input invalid data type. Expect integer 1 or 2 or 3.");
+                continue;
+        }
+        //int guess = Integer.parseInt(JOptionPane.showInputDialog(null, message));
+
+    }
+
+    /*Play Anagin? */
+    boolean playAgain = true;
+
+    while (playAgain) {
+
+        try {
+            
+            String choice = JOptionPane.showInputDialog(null, "Do you want to play again? (Y/N)");
+
+            choice = choice.toLowerCase();
+
+            if(choice == "y"){
+                //Play Again
+
+            } else {
+                //Show goodbye dialog and finish
+                JOptionPane.showMessageDialog(null, "Good Bye!");
+                System.exit(0);
+
+            }
+
+
+        } catch (Exception e) {
+        
+            JOptionPane.showMessageDialog(null, "Invalid input value.\n Please enter Y/N.");
+
+            System.out.println(e + "\nUser input invalid value. Expect String Y/y or N/n.");
+            continue;
+        }
+
+        
+    }
 
 }
 }
